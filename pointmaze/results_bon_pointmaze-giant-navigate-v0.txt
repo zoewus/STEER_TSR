@@ -1,0 +1,1 @@
+Maze: pointmaze-giant-navigate-v0 | Replica Exchange True | Lam 0.9 to 1.0 with 8 | Method: bon | Compute: 256.0 | Success Rate: 92.5
