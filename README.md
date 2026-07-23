@@ -47,11 +47,11 @@ Pretrained model will be uploaded to Drive.
 **Input:** Scores at adjacent temperatures/timesteps ($s$, $\tau$)
 
 1. Compute temperature-scaling ratio difference:
-   $$\text{tsr\_diff} = \text{score\_constant}(\lambda_\tau) - \text{score\_constant}(\lambda_s)$$
+   $$\text{tsr_diff} = \text{score_constant}(\lambda_\tau) - \text{score_constant}(\lambda_s)$$
 2. Compute integral approximation:
    $$\text{integral} = -0.5 \cdot (\text{score}_s + \text{score}_\tau) \cdot (x_\tau - x_s)$$
 3. Compute acceptance ratio:
-   $$a = \exp(\text{integral} \cdot \text{tsr\_diff})$$
+   $$a = \exp(\text{integral} \cdot \text{tsr_diff})$$
 4. Accept swap if:
    $$\text{Unif}(0, 1) < a$$
 
