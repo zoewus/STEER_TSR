@@ -84,6 +84,7 @@ class TFGGuidance(BaseGuidance):
         alpha_prod_ts: torch.Tensor,
         alpha_prod_t_prevs: torch.Tensor,
         eta: float,
+        temp_idx: torch.Tensor, # replica exchange
         **kwargs,
     ) -> torch.Tensor:
         cond = kwargs.get("cond", None)

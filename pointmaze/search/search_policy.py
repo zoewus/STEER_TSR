@@ -5,6 +5,10 @@ import torch
 from diffusers.utils.torch_utils import randn_tensor
 from diffuser.models.helpers import apply_conditioning
 
+import sys, os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__),  "..", "..")))
+from acceptance import init_temp_idx
+
 class SearchPolicy(BasePolicy):
     def __init__(self, args:Arguments, **kwargs):
         super().__init__(args=args, **kwargs)
@@ -32,6 +36,8 @@ class SearchPolicy(BasePolicy):
     def sample(self, cond, guidance:BaseGuidance, **kwargs):
         x = randn_tensor((self.per_sample_batch_size, self.diffusion.horizon,self.diffusion.transition_dim), generator=self.generator, device=self.device)
         x = apply_conditioning(x, cond, self.diffusion.action_dim)
+        temp_idx = init_temp_idx(self.args.n_particles,  x.device)
+
         guidance.reset()
         i = 0
         total_compute = 0
@@ -45,6 +51,7 @@ class SearchPolicy(BasePolicy):
                 self.alpha_prod_ts,
                 self.alpha_prod_t_prevs,
                 self.eta,
+                temp_idx, # replica exchange
                 cond=cond,
                 post_process=self.unnormalize
             )

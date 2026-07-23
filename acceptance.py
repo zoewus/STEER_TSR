@@ -91,7 +91,6 @@ def swap(x_ladder, t_val, a_bar, lam_start, lam_end, n_replicas,
             f"i={i} pair=({index_t},{index_s}) "
             f"lam_t={lam_t_val.item():.5f} lam_s={lam_s_val.item():.5f} "
             f"tsr_diff={tsr_diff.item():.6f} "
-            f"integral_std={integral.std().item():.6f} "
             f"log_ratio={log_ratio.item():.4f} accept={accept.item():.4f} "
             f"swapped={bool(accept_bool.item())}"
         )
