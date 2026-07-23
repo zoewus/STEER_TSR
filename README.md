@@ -48,7 +48,7 @@ Pretrained model will be uploaded to Drive.
 
 1. Compute temperature-scaling ratio difference:
 
-   $$\text{tsr\\_diff} = \text{score\\_constant}(\lambda_{\tau}) - \text{score\\_constant}(\lambda_s)$$
+   $$\text{tsrDiff} = \text{scoreConstant}(\lambda_{\tau}) - \text{scoreConstant}(\lambda_{s})$$
 
 2. Compute integral approximation:
 
@@ -56,12 +56,11 @@ Pretrained model will be uploaded to Drive.
 
 3. Compute acceptance ratio:
 
-   $$a = \exp(\text{integral} \cdot \text{tsr\\_diff})$$
+   $$a = \exp(\text{integral} \cdot \text{tsrDiff})$$
 
 4. Accept swap if:
 
    $$\text{Unif}(0, 1) < a$$
-
 ---
 
 > **Note:** Any replica exchange code is marked with `# replica exchange` to distinguish it from the baseline repo.
