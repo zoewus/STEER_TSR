@@ -52,7 +52,7 @@ Pretrained model will be uploaded to Drive.
 
 2. Compute integral approximation:
 
-   $$\text{integral} = -0.5 \cdot (\text{score}_{s} + \text{score}_{\tau}) \cdot (x_{\tau} - x_{s})$$
+   $$\text{integral} = -0.5 \cdot (\text{score}(s) + \text{score}(\tau)) \cdot (x(\tau) - x(s))$$
 
 3. Compute acceptance ratio:
 
