@@ -36,6 +36,7 @@ class BFSGuidance(BaseGuidance):
         alpha_prod_ts: torch.Tensor,
         alpha_prod_t_prevs: torch.Tensor,
         eta: float,
+        temp_idx: torch.Tensor,#replica_exchange
         **kwargs,
     ) -> torch.Tensor:
         
@@ -50,6 +51,7 @@ class BFSGuidance(BaseGuidance):
             alpha_prod_ts,
             alpha_prod_t_prevs,
             eta,
+            temp_idx,#replica_exchange
             **kwargs,
         )
         x0 = extra_results_dict['x0']
