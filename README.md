@@ -7,7 +7,7 @@ This repository contains four folders, each with its own README documenting the 
 - **Pointmaze**
 - **Robomimic**
 
-There is also an `acceptance.py` file, used across all datasets.
+There is also an `acceptance.py` file, shared across all datasets.
 
 ## Downloading Model Checkpoints
 
@@ -30,15 +30,15 @@ Pretrained model will be uploaded to Drive.
 **Input:** Temperature schedule λ, number of replicas `n_replicas`
 
 1. Sample $x_T \sim \mathcal{N}(0, \lambda)$
-2. Initialize `temp_idx = 0, ..., n_replicas`
+2. Initialize `temp_idx` for each replica, `temp_idx = 0, ..., n_replicas - 1`
 3. For $t = T, \dots, 0$:
    1. Sample $z \sim \mathcal{N}(0, 1)$
-   2. If `lambda_start != 0` and `lambda_end != 0`:
+   2. If `lambda_start != 1` and `lambda_end != 1`:
       1. Compute $\epsilon(x_t, t)$
       2. `temp_idx = swap(epsilon, temp_idx)`
       3. `epsilon = scale(epsilon, temp_idx)`
    3. Perform DDPM step
-4. **Return** sample with the corresponding `temp_idx`
+4. **Return** sample corresponding to each `temp_idx`
 
 ---
 
@@ -55,5 +55,6 @@ Pretrained model will be uploaded to Drive.
 4. Accept swap if:
    $$\text{Unif}(0, 1) < a$$
 
+---
 
-NOTE: ANY REPLICA EXCHANGE CODE HAS #replica exchange TO DEMARK IT FROM BASELINE REPO. 
+> **Note:** Any replica exchange code is marked with `# replica exchange` to distinguish it from the baseline repo.
